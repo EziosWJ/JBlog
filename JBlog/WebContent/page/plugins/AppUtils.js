@@ -21,7 +21,13 @@ function HTMLEncode(html) {
     temp = null;
     return output;
 }
-
+function HTMLDecode(text) {
+    var temp = document.createElement("div");
+    temp.innerHTML = text;
+    var output = temp.innerText || temp.textContent;
+    temp = null;
+    return output;
+}
 /**
 *@author wangj
 *@date 2018-09-13 20:54:20

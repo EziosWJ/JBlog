@@ -14,5 +14,11 @@ public class ArticleService {
 		articleMain.setArticleId("AM100020180913"+String.valueOf(Integer.parseInt(a.getArticleId().substring(13))+1).substring(1));
 		return articleMain.save();
 	}
-	
+	public List<?> getArticleList(){
+		List<?> list = dao.find("SELECT * FROM jblog_article_main");
+		return list;
+	}
+	public ArticleMain getArticle(String id){
+		return dao.findById(id);
+	}
 }

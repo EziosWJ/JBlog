@@ -95,7 +95,7 @@
             <div class="row article_row">
                 <div class="page-header">
                     <h3>
-                        <a href="#">你好！世界。</a>
+                        <a href="#"><span id="title"></span></a>
                     </h3>
                     <div class="row article_row_little">
                         <p class="text-right">
@@ -123,11 +123,8 @@
                     </div>
                 </div>
                 <div class="row article_row_content">
-                    <div class="col-md-3">
-                        <img src="static/image/shuijiao.jpg" class="img-responsive"/>
-                    </div>
-                    <div class="col-md-9">
-                        <p>sdadasdsdsad</p>
+                    <div class="col-md-12" id="content">
+
                     </div>
                 </div>
             </div>
@@ -151,6 +148,16 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
+<script src="plugins/AppUtils.js"></script>
+<script>
+    $(function () {
+        jqyAsyncJsonPost2(getContextPath()+'article/getArticleDetailed',null,function (data) {
+            var data = data;
+            var content = HTMLDecode(data.content.article.article_Content);
+            $('#content').append(content);
+            $('#title').text(data.content.article.article_Title);
+        })
+    })
+</script>
 </body>
 </html>

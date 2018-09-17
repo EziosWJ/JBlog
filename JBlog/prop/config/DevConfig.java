@@ -9,6 +9,7 @@ import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 
 public class DevConfig extends JFinalConfig {
@@ -16,7 +17,8 @@ public class DevConfig extends JFinalConfig {
 	@Override
 	public void configConstant(Constants me) {
 		me.setDevMode(true);
-
+		me.setViewType(ViewType.JSP);
+		me.setBaseUploadPath("upload");
 	}
 
 	@Override

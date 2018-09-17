@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  id="myForm">
+    <input type="file" multiple id="file" accept="image/gif, image/jpeg,image/png" >//加上multiple属性后可以实现同时选择多个文件,注意:这个input是没有name的所以上传时不会上传
+    <input type="text" name="a" >
+    <input type="button" id="btn" value="提交" />//绑定点击事件;点击时将文件添加到formData中
+</form>
+<script src="plugins/AppUtils.js"></script>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        $("#btn").click(function(){
+            var form = document.getElementById("myForm");//获取到form表单
+            var formData = new FormData(form);//创建一个formData对象,将表单中的数据放进去
+            for(var i=0; i<$('#file')[0].files.length;i++){//使用for循环将选择的文件一个一个添加(append)到formData对象中
+                formData.append('img'+i, $('#file')[0].files[i]);//注意:如果你使用的是jfinal框架这里的key(img)必须是不同的,如果相同的话文件能上传但是拿上传文件名的时候只能拿到一个
+            }
+            $.ajax({//ajax
+                url: getContextPath()+ "upload/uploadImg",
+                type: "POST",
+                processData : false,//不处理数据,必须为false
+                contentType : false,//不设置内容类型,必须为false
+                data: formData,
+                success: function(data){
+                    alert(data.success);
+                },
+                dataType:"json",
+                error:function(e){
+                    alert("ajax调用错误");
+                }
+
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
