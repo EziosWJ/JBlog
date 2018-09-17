@@ -1,0 +1,83 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: "Microsoft Yahei","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555;
+  background-color: #eee;
+  overflow-x: hidden;
+}
+/*footer*/
+footer{
+}
+
+/*.jumbotron*/
+.jumbotron{
+  background: url(../static/image/banner2.jpg) no-repeat 0px 0px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  min-height: 400px;
+}
+.jumbotron .container h1{
+  color: white;
+}
+.jumbotron .container p{
+  color: white;
+}
+
+
+/*panel_row*/
+
+
+
+
+
+
+
+/*article_row*/
+
+.article_row{
+  background-color: #fff;
+  padding: 20px 15px 10px 20px;
+  margin-bottom: 10px;
+  position: relative;
+  clear: both
+}
+.article_row .page-header{
+  margin-top: 0px;
+}
+
+.article_row p{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+}
+.article_row a{
+  color: #337ab7;
+  text-decoration: none;
+}
+.article_row img{
+  /*height: 30%;*/
+  /*width: 30%;*/
+}
+.article_row_little{
+  padding-right: 25px;
+}
+.article_row_little span{
+  padding-left: 5px;
+}
+.article_row_little .fa{
+  color: #337ab7;
+}
+.article_row_little .love a{
+  color: red;
+}
+.article_row_little .love .fa{
+  color: red;
+}
