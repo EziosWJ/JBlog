@@ -10,7 +10,7 @@ import com.jfinal.plugin.activerecord.tx.TxConfig;
 public class UserService {
 
 	Record rd = new Record();
-	private User dao = new User().dao();
+	private static final User dao = new User().dao();
 	
 	@Before(Tx.class)
 	public User login(User user) {

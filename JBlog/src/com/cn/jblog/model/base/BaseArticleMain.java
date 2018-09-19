@@ -18,6 +18,15 @@ public abstract class BaseArticleMain<M extends BaseArticleMain<M>> extends Mode
 		return getStr("article_Id");
 	}
 
+	public M setArticleClass(java.lang.String articleClass) {
+		set("article_Class", articleClass);
+		return (M)this;
+	}
+	
+	public java.lang.String getArticleClass() {
+		return getStr("article_Class");
+	}
+
 	public M setArticleTitle(java.lang.String articleTitle) {
 		set("article_Title", articleTitle);
 		return (M)this;
@@ -43,6 +52,15 @@ public abstract class BaseArticleMain<M extends BaseArticleMain<M>> extends Mode
 	
 	public java.lang.String getArticleContent() {
 		return getStr("article_Content");
+	}
+
+	public M setArticleCreateTime(java.util.Date articleCreateTime) {
+		set("article_Create_Time", articleCreateTime);
+		return (M)this;
+	}
+	
+	public java.util.Date getArticleCreateTime() {
+		return get("article_Create_Time");
 	}
 
 	public M setArticleComments(java.lang.Integer articleComments) {

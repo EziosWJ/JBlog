@@ -12,20 +12,25 @@ public class ArticleController extends Controller {
 	private ArticleService articleService = new ArticleService();
 	
 	public void index(){
-		redirect("/page/blog_list.html");
+		render("/page/blog_list.jsp");
 	}
 	public void showArticleWrite(){
-		redirect("/page/blog_write.html");
+		render("/page/blog_write.jsp");
 	}
 	public void showArticle(){
 		String article_Id = getPara("article_Id");
-		getSession().setAttribute("article_Id", article_Id);
-		redirect("/page/blog_article.html");
+		getRequest().setAttribute("article_Id", article_Id);
+		render("/page/blog_article.jsp");
 	}
 	public void getArticleDetailed(){
-		String id = (String) getSession().getAttribute("article_Id");
+		String id = getPara("article_Id");
 		ArticleMain articleMain = articleService.getArticle(id);
-		renderJson(MsgResponse.success().put("article",articleMain));
+		boolean update = articleService.viewArticle(articleMain);
+		if(update){
+			renderJson(MsgResponse.success().put("article",articleMain));
+		}else {
+			renderJson(MsgResponse.fail());
+		}
 	}
 	public void getArticleList(){
 		List<?> list = articleService.getArticleList();
@@ -34,6 +39,8 @@ public class ArticleController extends Controller {
 	public void submitArticle() {
 		System.out.println(getPara("article_Content"));
 		ArticleMain articleMain  = getModel(ArticleMain.class,"");
+		articleMain.setArticleCreateTime(new java.util.Date());
+		articleMain.setArticleViews(1).setArticleComments(0).setArticleHeart(0);
 		articleService.submitArticle(articleMain);
 		renderJson(articleMain);
 	}

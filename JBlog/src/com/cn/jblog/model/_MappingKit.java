@@ -18,6 +18,8 @@ public class _MappingKit {
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("jblog_article_main", "article_Id", ArticleMain.class);
 		arp.addMapping("jblog_article_temp", "temp_Id", ArticleTemp.class);
+		arp.addMapping("jblog_left_bar_class", "class_Id", LeftBarClass.class);
+		arp.addMapping("jblog_upload_img", "img_Id", UploadImg.class);
 		arp.addMapping("jblog_user", "user_Id", User.class);
 	}
 }
